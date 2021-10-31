@@ -3,10 +3,12 @@ extends layout
 block content 
   h1= title
 
+  //- p #{JSON.stringify(bookinstance_list)}
+
   ul
     each val in bookinstance_list
       li 
-        a(href=val.url) #{val.book.title}: #{val.imprint} -
+        a(href=`/catalog/bookinstance/${val._id}`)  #{val["book"]}
         if val.status == 'Available'
           span.text-success #{val.status}
         else if val.status=='Maintenance'
