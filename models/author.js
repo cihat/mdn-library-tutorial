@@ -29,7 +29,7 @@ AuthorSchema.virtual('name').get(function () {
 AuthorSchema.virtual('lifespan').get(function () {
   let lifetime_string = ""
   if (this.date_of_birth) {
-    lifetime_string = DateTime.fromJSDate(this.date_of_birth).toLocalString(DateTime.DATE_MED)
+    lifetime_string += DateTime.fromJSDate(this.date_of_birth).toLocalString(DateTime.DATE_MED)
   }
 
   lifetime_string += ' - '
