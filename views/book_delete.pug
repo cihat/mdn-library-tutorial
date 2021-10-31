@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1 #{title}
+
+  h2 Book Title: #{book.title}
+
+  h3 #{book._id}
+
+
+  h3 Book Author's Name: #{book.author.first_name} #{book.author.last_name}
+
+  h4 Book Summary
+  p #{book.summary}
+
+  p Do you really want to delete this Author?
+
+  form(method='POST' action=`/catalog/book/${book._id}/delete`)
+    div.form-group
+      input#authorid.form-control(type='hidden',name='authorid', required='true', value=book._id )
+      button.btn.btn-warning(type='submit') Delete
