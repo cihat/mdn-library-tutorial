@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1 #{title}: #{author.name}
-  p= author.lifespan
+  p= author.lifetime_string
 
   if author_books.length
 
@@ -24,5 +24,4 @@ block content
     form(method='POST' action='')
       div.form-group
         input#authorid.form-control(type='hidden',name='authorid', required='true', value=author._id )
-
-      button.btn.btn-primary(type='submit') Delete
+        button.btn.btn-primary(type='submit') Delete
