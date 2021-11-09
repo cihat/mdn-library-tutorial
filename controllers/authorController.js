@@ -134,11 +134,22 @@ exports.author_delete_post = function (req, res) {
 };
 
 //* Display Author update form on GET.
-exports.author_update_get = function (req, res) {
-  res.send('NOT IMPLEMENTED: Author update GET');
+exports.author_update_get = function (req, res, next) {
+  Author.findById(req.body.id, (err, author) => {
+    if (err) next(err)
+    if (author === null) {
+      const err = new Error('Author Not found')
+      err.status = 404
+      return next(err)
+    }
+
+    //* Success
+    res.render('author_form', { title: 'Update Author', author })
+  })
 };
 
 //* Handle Author update on POST.
 exports.author_update_post = function (req, res) {
+  console.log("NOT IMPLEMENTED: Author update POST")
   res.send('NOT IMPLEMENTED: Author update POST');
 };
