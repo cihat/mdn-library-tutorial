@@ -10,16 +10,18 @@ if (!userArgs[0].startsWith('mongodb')) {
     return
 }
 */
-var async = require('async')
-var Book = require('./models/book')
-var Author = require('./models/author')
-var Genre = require('./models/genre')
-var BookInstance = require('./models/bookinstance')
+const async = require('async')
+const Book = require('./models/book')
+const Author = require('./models/author')
+const Genre = require('./models/genre')
+const BookInstance = require('./models/bookinstance')
+require('dotenv').config()
 
 
-var mongoose = require('mongoose');
-var mongoDB = userArgs[0];
-mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
+
+const mongoose = require('mongoose');
+const mongoDB = userArgs[0];
+mongoose.connect(process.env.MONGODBATLAS_CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
